@@ -1,9 +1,17 @@
 "use client";
 
-const formatStars = (n = 0) => {
-  const clamped = Math.max(0, Math.min(5, Number(n) || 0));
-  return "★".repeat(clamped) + "☆".repeat(5 - clamped);
-};
+function formatStars(score) {
+  if (!score) score = 0;
+
+  if (score > 5) score = 5;
+  if (score < 0) score = 0;
+
+  let stars = "★".repeat(score);
+  stars += "☆".repeat(5 - score);
+
+  return stars;
+}
+
 
 export default function ProductDetail() {
   return (
